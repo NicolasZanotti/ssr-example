@@ -1,14 +1,21 @@
+const fs = require('fs')
 const app = new (require('koa'))()
 const router = require('koa-router')()
 const Vue = require('vue')
-const renderer = require('vue-server-renderer').createRenderer()
+const template = fs.readFileSync('./src/index.html', 'utf-8')
+const rendererOptions = { template }
+const renderer = require('vue-server-renderer').createRenderer(rendererOptions)
 
-const vueApp = new Vue({
-  template: `<div>Hello World</div>`
+const renderContext = {
+  title: 'Vue SSR Example'
+}
+
+const vm = new Vue({
+  template: `<h1>Hello World</h1>`
 })
 
 router.get('/', ctx => {
-  renderer.renderToString(vueApp)
+  renderer.renderToString(vm, renderContext)
     .then(html => ctx.body = html)
     .catch(error => ctx.throw(error))
 })
