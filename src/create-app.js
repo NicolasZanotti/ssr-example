@@ -17,8 +17,15 @@ module.exports = function createApp(ctx) {
         <p>URL is {{ url }}</p>
       </div>
     `,
+    /*
+      Since there are no dynamic updates, of all the lifecycle hooks, only beforeCreate and created will be called during SSR
+      @see https://ssr.vuejs.org/guide/universal.html#component-lifecycle-hooks
+    */
+    beforeCreate: function() {
+      console.log('beforeCreate')
+    },
     created: function() {
-      console.log('created');
+      console.log('created')
     }
   })
 }
