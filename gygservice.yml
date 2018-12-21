@@ -1,0 +1,11 @@
+version: '1'
+service:
+  name: ssr-example
+  template: node-10
+  dronefile: .drone.yml
+development:
+  containers:
+    web:
+      command:
+        - node
+        - index
