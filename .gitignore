@@ -1,6 +1,3 @@
 .*
 !.gitignore
-!.drone.yml
-
 node_modules/
-dist/

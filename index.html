@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+<!--vue-ssr-outlet-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script>
+  // Mount a separate Vue instance to the app on the frontend.
+  new Vue({
+    beforeCreate: function() {
+      console.log('client: beforeCreate method called')
+    },
+    created: function() {
+      console.log('client: created method called')
+    }
+  }).$mount('#app')
+</script>
+</body>
+</html>
